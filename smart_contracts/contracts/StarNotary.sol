@@ -16,12 +16,23 @@ contract StarNotary is ERC721 {
     mapping(uint256 => uint256) public starsForSale;
 
     function createStar(string _name, string _starStory, string _ra, string _dec, string _mag, uint256 _tokenId) public { 
+        if(isEmpty(_ra) || isEmpty(_dec) || isEmpty(_mag))
+            return;
+            
         Star memory newStar = Star(_name, _starStory, _ra, _dec, _mag);
-        // verify empty fields
 
         tokenIdToStarInfo[_tokenId] = newStar;
 
         _mint(msg.sender, _tokenId);
+    }
+
+    function isEmpty(string memory str) internal returns (bool empty){
+        bytes memory emptyString = bytes(str); // Uses memory
+        if (emptyString.length == 0) {
+            empty = true;
+        } else {
+            empty = false;
+        }
     }
 
     function putStarUpForSale(uint256 _tokenId, uint256 _price) public { 

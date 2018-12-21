@@ -2,6 +2,17 @@ const StarNotary = artifacts.require('StarNotary')
 
 contract('StarNotary', accounts => { 
 
+    let user1 = accounts[1]
+    let user2 = accounts[2]
+    let randomMaliciousUser = accounts[3]
+
+    let name = 'awesome star!'
+    let starStory = "this star was bought for my wife's birthday"
+    let ra = "1"
+    let dec = "1"
+    let mag = "1"
+    let starId = 1
+
     beforeEach(async function() { 
         this.contract = await StarNotary.new({from: accounts[0]})
     })
@@ -9,7 +20,7 @@ contract('StarNotary', accounts => {
     describe('can create a star', () => { 
         it('can create a star and get its name', async function () { 
             
-            await this.contract.createStar('awesome star!', 1, {from: accounts[0]})
+            await this.contract.createStar(name, starStory, ra, dec, mag, {from: accounts[0]})
 
             assert.equal(await this.contract.tokenIdToStarInfo(1), 'awesome star!')
         })
