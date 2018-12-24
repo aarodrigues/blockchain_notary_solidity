@@ -1,3 +1,6 @@
+#Compile directory
+build/
+
 # Logs
 logs
 *.log

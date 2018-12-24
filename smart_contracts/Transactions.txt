@@ -1,0 +1,18 @@
+StarNotary address (Rinkeby): 0x9d7b818b378857157071a7c9eb3c757ba5dd0ab3
+
+Create star:
+
+TxHash:0x46ee1cc385051d1e9c7475dbc9291d08fe1cc6e1af5d675f8da7c031fa2d2663
+Block Height:3570119 (1 Block Confirmation)
+TimeStamp: 16 secs ago (Dec-24-2018 07:42:58 PM +UTC)
+From:0xcb60793f3a373415a78b7fe796260f34cab457b5
+To:Contract 0x9d7b818b378857157071a7c9eb3c757ba5dd0ab3 
+Token_Id: 3
+
+Put Star up for sale:
+
+TxHash:0xef0720f2a7d74b1f0e5d4fbaa97875b58447d6a492686a2e3727124acb071be6 
+Height:3570155 (2 Block Confirmations)TimeStamp: 20 secs ago (Dec-24-2018 07:51:58 PM +UTC)
+From:0xcb60793f3a373415a78b7fe796260f34cab457b5
+To:Contract 0x9d7b818b378857157071a7c9eb3c757ba5dd0ab3
+
