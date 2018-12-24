@@ -41,7 +41,6 @@ contract StarNotary is ERC721 {
 
         _mint(msg.sender, _tokenId);
 
-
         minted = 1;
 
         emit mintedToken(minted);
@@ -58,7 +57,7 @@ contract StarNotary is ERC721 {
 
     function isValid(string _ra, string _dec, string _mag) private returns (bool){
         bytes32  coordHash = keccak256(abi.encodePacked(_ra,_dec,_mag));
-        
+
         if(uniqueness[coordHash] == coordHash){
             return false;
         }else{
