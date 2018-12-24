@@ -14,24 +14,56 @@ contract StarNotary is ERC721 {
 
     mapping(uint256 => Star) public tokenIdToStarInfo; 
     mapping(uint256 => uint256) public starsForSale;
+    mapping(bytes32 => bytes32) public uniqueness;
 
-    function createStar(string _name, string _starStory, string _ra, string _dec, string _mag, uint256 _tokenId) public { 
-        if(isEmpty(_ra) || isEmpty(_dec) || isEmpty(_mag))
+    event validation(string error);
+    event mintedToken(uint minted);
+
+    uint public minted;
+
+    function createStar(string _name, string _starStory, string _ra, string _dec, string _mag, uint256 _tokenId)  public { 
+        
+        minted = 0;
+
+        if(isEmpty(_ra) || isEmpty(_dec) || isEmpty(_mag)){
+            emit validation("Star coordenates cannot be empty!");
             return;
-            
+        }
+
+        if(!isValid(_ra,_dec,_mag)){
+            emit validation("Is not allowed stars with equal coordenates!");
+            return;
+        }
+        
         Star memory newStar = Star(_name, _starStory, _ra, _dec, _mag);
 
         tokenIdToStarInfo[_tokenId] = newStar;
 
         _mint(msg.sender, _tokenId);
+
+
+        minted = 1;
+
+        emit mintedToken(minted);
     }
 
-    function isEmpty(string memory str) internal returns (bool empty){
+    function isEmpty(string memory str) private pure returns (bool empty){
         bytes memory emptyString = bytes(str); // Uses memory
         if (emptyString.length == 0) {
             empty = true;
         } else {
             empty = false;
+        }
+    }
+
+    function isValid(string _ra, string _dec, string _mag) private returns (bool){
+        bytes32  coordHash = keccak256(abi.encodePacked(_ra,_dec,_mag));
+        
+        if(uniqueness[coordHash] == coordHash){
+            return false;
+        }else{
+            uniqueness[coordHash] = coordHash;
+            return true;
         }
     }
 
