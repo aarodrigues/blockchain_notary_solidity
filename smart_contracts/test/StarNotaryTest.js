@@ -82,22 +82,14 @@ contract('StarNotary', accounts => {
             })
 
             it('user2 is the owner of the star after they buy it', async function() { 
-                var block = web3.eth.getBlock("latest");
-                console.log("gasLimit: " + block.gasLimit);
-                web3.eth.getGasPrice(function(e, r) { console.log("Cost: " + (block.gasLimit * r ))})
-
                 await this.contract.buyStar(starId, {from: user2, value: 10 * starPrice})
                 assert.equal(await this.contract.ownerOf(starId),user2)
             })
 
-            it('user2 ether balance changed correctly', async function () { 
-                
-                console.log(balance.valueOf())
-       
-                //const gasCost = tx.gasPrice.mul(receipt.gasUsed);
-                //onsole.log("Spend value: "+ web3.fromWei(gasCost))
-                //await this.contract.buyStar(starId, {from: user2, value: 10 * starPrice})
-                //assert.equal(web3.eth.getBalance(user2).valueOf(),(balance.valueOf()-web3.eth.getBalance(user2).valueOf()))
+            it('user2 ether balance changed correctly', async function () {   
+                //console.log(balance.valueOf())
+                var cost  = await this.contract.buyStar.estimateGas(starId, {from: user2, value: 10 * starPrice})
+                assert.equal(web3.eth.getBalance(user2).valueOf(),(balance.valueOf()-cost*100000000000-starPrice))
             })
         })
     })
