@@ -26,17 +26,17 @@ contract('StarNotary', accounts => {
         })
     })
 
-    describe('exit name and symbol', () => { 
-        it('name token', async function () { 
-            let tokenName = await this.contract.name()
-            assert.equal(tokenName,"Notary Star");
-        })
+    // describe('exit name and symbol', () => { 
+    //     it('name token', async function () { 
+    //         let tokenName = await this.contract.name()
+    //         assert.equal(tokenName,"Notary Star");
+    //     })
 
-        it('symbol token', async function () { 
-            let tokenSymbol = await this.contract.symbol()
-            assert.equal(tokenSymbol,"N$t");
-        })
-    })
+    //     it('symbol token', async function () { 
+    //         let tokenSymbol = await this.contract.symbol()
+    //         assert.equal(tokenSymbol,"N$t");
+    //     })
+    // })
 
     describe('star uniqueness', () => { 
 
@@ -45,33 +45,35 @@ contract('StarNotary', accounts => {
             await this.contract.createStar(name, starStory, ra, dec, mag, starId, {from: accounts[0]})
         })
 
-        it('only stars unique stars can be minted', async function() { 
+        it('only unique stars can be minted', async function() { 
             // first we mint our first star
             await this.contract.createStar(name, starStory, ra, dec, mag, starId, {from: accounts[0]})
             // then we try to mint the same star, and we expect an error
             assert.equal(await this.contract.minted(),0);
         })
 
-        // it('only stars unique stars can be minted even if their ID is different', async function() { 
-        //     // first we mint our first star
-        //     await this.contract.createStar(name, starStory, ra, dec, mag, 2, {from: accounts[0]})
-        //     // then we try to mint the same star, and we expect an error
-        //     assert.equal(await this.contract.minted(),0);
-        // })
+        it('only stars unique stars can be minted even if their ID is different', async function() { 
+            // first we mint our first star
+            await this.contract.createStar(name, starStory, ra, dec, mag, 2, {from: accounts[0]})
+            let minted = await this.contract.minted();
+            //console.log("test: ================================= "+minted);
+            // then we try to mint the same star, and we expect an error
+            assert.equal(minted,0);
+        })
 
-        // it('minting unique stars does not fail', async function() { 
-        //     for(let i = 0; i < 10; i ++) { 
-        //         let id = i
-        //         let newRa = i.toString()
-        //         let newDec = i.toString()
-        //         let newMag = i.toString()
+        it('minting unique stars does not fail', async function() { 
+            for(let i = 0; i < 10; i ++) { 
+                let id = i
+                let newRa = i.toString()
+                let newDec = i.toString()
+                let newMag = i.toString()
 
-        //         await this.contract.createStar(name, starStory, newRa, newDec, newMag, id, {from: user1})
+                await this.contract.createStar(name, starStory, newRa, newDec, newMag, id, {from: user1})
 
-        //         let starInfo = await this.contract.tokenIdToStarInfo(id)
-        //         assert.equal(starInfo[0], name)
-        //     }
-        // })
+                let starInfo = await this.contract.tokenIdToStarInfo(id)
+                assert.equal(starInfo[0], name)
+            }
+        })
     })
 
     describe('buying and selling stars', () => { 

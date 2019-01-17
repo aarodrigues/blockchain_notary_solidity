@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
-import "openzeppelin-solidity/contracts/token/ERC721/IERC721Metadata.sol";
+//import "openzeppelin-solidity/contracts/token/ERC721/IERC721Metadata.sol";
 
 contract StarNotary is ERC721{ 
 
@@ -23,16 +23,16 @@ contract StarNotary is ERC721{
     uint public minted;
 
 
-    function name() external view returns (string){
-        return "Notary Star";
-    }
+    // function name() external view returns (string){
+    //     return "Notary Star";
+    // }
 
-    function symbol() external view returns (string){
-        return "N$t";
-    }
+    // function symbol() external view returns (string){
+    //     return "N$t";
+    // }
 
     function createStar(string _name, string _starStory, string _ra, string _dec, string _mag, uint256 _tokenId)  
-        public checkIfStarExist(_ra, _dec, _mag) { 
+        public checkIfStarExist(_ra, _dec, _mag){ 
         
         minted = 0;
         
@@ -50,9 +50,9 @@ contract StarNotary is ERC721{
     modifier checkIfStarExist(string _ra, string _dec, string _mag) {
         bytes32  coordHash = keccak256(abi.encodePacked(_ra,_dec,_mag));
 
-        // if(isEmpty(_ra) || isEmpty(_dec) || isEmpty(_mag)){
-        //     revert("Star coordenates cannot be empty!");
-        // }
+        if(isEmpty(_ra) || isEmpty(_dec) || isEmpty(_mag)){
+            revert("Star coordenates cannot be empty!");
+        }
 
         if(uniqueness[coordHash] == coordHash){
             revert("Is not allowed stars with equal coordenates!");
