@@ -52,6 +52,15 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
     },
 
+    // rinkeby: {
+    //   provider: function() { 
+    //     return new HDWalletProvider(mnemonic, 'https://rinkeby.infura.io/v3/79c3f13d9cf5449ab1d020895bd09420') 
+    //   },
+    //   network_id: 4,
+    //   gas: 4500000,
+    //   gasPrice: 10000000000,
+    // }
+
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port
