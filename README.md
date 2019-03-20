@@ -2,6 +2,11 @@
 
 Ethereum smart contract to notarize a star using blockchain technology.
 
+## Considerations 
+
+The project was deployed on Rinkeby test network in the follow address: 0x2A7081f476CA958Bd0219a845654d9aE8e9d4a12
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
