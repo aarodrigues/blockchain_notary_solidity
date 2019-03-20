@@ -23,7 +23,8 @@ This project was build on linux operational system using the following tools:
 * NodeJS v10.15.1
 * NPM 6.9.0
 * Infura
-* Truffle Framework v5.0.5.
+* Truffle Framework v5.0.5
+* Solidity 0.5.2
 
 ### Installing
 
