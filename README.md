@@ -2,9 +2,13 @@
 
 Ethereum smart contract to notarize a star using blockchain technology.
 
-## Considerations 
+## Highlights 
 
-The project was deployed on Rinkeby test network in the follow address: 0x2A7081f476CA958Bd0219a845654d9aE8e9d4a12
+Contract was deployed on Rinkeby Network.
+
+Token Name: ShiningStar
+Token Symbol: SST
+Rinkeby Contract Address: 0x2A7081f476CA958Bd0219a845654d9aE8e9d4a12
 
 ## Getting Started
 
@@ -12,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-This project was build on linux operational system using NodeJS, NPM, Webpack, Infura, Ganache, Web3js and Truffle Framework, but once this package was installed it should work fine and all systems.
+This project was build on linux operational system using NodeJS v10.15.1, NPM 6.9.0, Infura, Web3js and Truffle Framework v5.0.5.
 
 ### Installing
 
@@ -42,6 +46,13 @@ Install on Windows:
 
 Download binary from oficial page [here](https://nodejs.org/en/download/)
 
+#### Truffle Framework
+
+Install truffle:
+
+```bash
+    npm install -g truffle
+```
 
 #### Install Dependencies
 
