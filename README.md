@@ -16,9 +16,14 @@ Rinkeby Contract Address: 0x2A7081f476CA958Bd0219a845654d9aE8e9d4a12
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+### Tools
 
-This project was build on linux operational system using NodeJS v10.15.1, NPM 6.9.0, Infura, Web3js and Truffle Framework v5.0.5.
+This project was build on linux operational system using the following tools:
+
+* NodeJS v10.15.1
+* NPM 6.9.0
+* Infura
+* Truffle Framework v5.0.5.
 
 ### Installing
 
