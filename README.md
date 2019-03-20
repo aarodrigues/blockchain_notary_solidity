@@ -7,7 +7,9 @@ Ethereum smart contract to notarize a star using blockchain technology.
 Contract was deployed on Rinkeby Network.
 
 Token Name: ShiningStar
+
 Token Symbol: SST
+
 Rinkeby Contract Address: 0x2A7081f476CA958Bd0219a845654d9aE8e9d4a12
 
 ## Getting Started
