@@ -18,7 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Tools
 
-This project was build on linux operational system using the following tools:
+This project was built on linux operating system using the following tools:
 
 * NodeJS v10.15.1
 * NPM 6.9.0
